@@ -218,7 +218,7 @@ export default function Page() {
           />
         </div>
         <button
-          onClick={() => router.push("/merchant/addUpdatemerchant")}
+          onClick={() => router.push("/stokes/addUpdatestock")}
           className="inline-flex w-auto items-center justify-center gap-2.5 rounded-md bg-primary px-4 py-[9px] text-center font-medium text-white hover:bg-opacity-90"
         >
           + Add Stock

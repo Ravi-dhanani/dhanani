@@ -1,8 +1,11 @@
+"use client";
 import Input from "@/common/Inpute";
+import { useRouter } from "next/navigation";
 
 export default function Page() {
+  const router = useRouter();
   return (
-    <div className="">
+    <div>
       <h1 className="mb-3 block text-2xl font-bold text-black dark:text-white">
         Add Seller
       </h1>
@@ -93,7 +96,7 @@ export default function Page() {
         <div className="flex justify-end gap-4.5">
           <button
             className="flex justify-center rounded border border-stroke px-6 py-2 font-medium text-black hover:shadow-1 dark:border-strokedark dark:text-white"
-            type="submit"
+            onClick={() => router.push("/merchant")}
           >
             Cancel
           </button>
