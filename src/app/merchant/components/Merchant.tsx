@@ -56,6 +56,7 @@ export default function Merchant() {
       item.status.toLowerCase().includes(searchValue)
     );
   });
+
   const paginatedData = filteredData.slice(
     (currentPage - 1) * itemsPerPage,
     currentPage * itemsPerPage,
