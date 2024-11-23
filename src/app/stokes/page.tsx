@@ -5,85 +5,104 @@ import { useState } from "react";
 
 const packageData = [
   {
-    name: "Free Package",
-    mobileNo: 9723567019,
-    email: "admin@gmail.com",
-    status: "Active",
+    SellerName: "Jemish Lakhani",
+    StockName: "mobiles",
+    totalStock: 168,
+    givenStock: 12,
+    per_stock_Price: 10,
+    date: "12-03-2024",
+    stockGivenDate: "12-12-2045",
   },
   {
-    name: "Basic Package",
-    mobileNo: 9723567020,
-    email: "user@gmail.com",
-    status: "Free",
+    SellerName: "Alok Kapoor",
+    StockName: "books",
+    totalStock: 100,
+    givenStock: 8,
+    per_stock_Price: 20,
+    date: "15-05-2025",
+    stockGivenDate: "15-08-2025",
   },
   {
-    name: "Premium Package",
-    mobileNo: 9723567021,
-    email: "user@gmail.com",
-    status: "Paid",
-  },
-  {
-    name: "Pro Package",
-    mobileNo: 9723567022,
-    email: "user@gmail.com",
-    status: "Free",
-  },
-  {
-    name: "Business Package",
-    mobileNo: 9723567023,
-    email: "user@gmail.com",
-    status: "Paid",
-  },
-  {
-    name: "Standard Package",
-    mobileNo: 9723567024,
-    email: "user@gmail.com",
-    status: "Paid",
+    SellerName: "Priya Chaudhary",
+    StockName: "electronics",
+    totalStock: 150,
+    givenStock: 10,
+    per_stock_Price: 50,
+    date: "10-06-2026",
+    stockGivenDate: "10-09-2026",
   },
 ];
-export default function Merchant() {
+
+export default function Page() {
   const router = useRouter();
   const [currentPage, setCurrentPage] = useState(1);
-  const itemsPerPage = 2;
-  const paginatedData = packageData.slice(
+  const [filter, setFilter] = useState("");
+  const itemsPerPage = 5;
+
+  // Filtered Data
+  const filteredData = packageData.filter(
+    (item) =>
+      item.SellerName.toLowerCase().includes(filter.toLowerCase()) ||
+      item.StockName.toLowerCase().includes(filter.toLowerCase()),
+  );
+
+  // Paginated Data
+  const paginatedData = filteredData.slice(
     (currentPage - 1) * itemsPerPage,
     currentPage * itemsPerPage,
   );
 
   const columns = [
     {
-      header: "Name",
+      header: "SellerName",
       accessor: (row: any) => (
-        <h5 className="font-medium text-black dark:text-white">{row.name}</h5>
+        <h5 className="font-medium text-black dark:text-white">
+          {row.SellerName}
+        </h5>
       ),
       className: "min-w-[220px]",
     },
     {
-      header: "Mobile No.",
-      accessor: "mobileNo",
+      header: "Stock Name",
+      accessor: "StockName",
       className: "min-w-[150px]",
     },
     {
-      header: "Email",
-      accessor: "email",
-      className: "min-w-[150px]",
-    },
-    {
-      header: "Status",
+      header: "Default Stock",
       accessor: (row: any) => (
-        <p
-          className={`inline-flex rounded-full bg-opacity-10 px-3 py-1 text-sm font-medium ${
-            row.status === "Active"
-              ? "bg-success text-success"
-              : row.status === "Unpaid"
-                ? "bg-danger text-danger"
-                : "bg-warning text-warning"
-          }`}
-        >
-          {row.status}
-        </p>
+        <span className="inline-flex rounded-full !bg-green-700 bg-opacity-10 p-2 px-3 text-sm font-medium text-white">
+          {row.totalStock}
+        </span>
       ),
+      className: "min-w-[150px]",
+    },
+    {
+      header: "Given Stock",
+      accessor: (row: any) => (
+        <span className="inline-flex rounded-full !bg-red-500 bg-opacity-10 px-3 py-2 text-sm font-medium text-white">
+          {row.givenStock}
+        </span>
+      ),
+      className: "min-w-[150px]",
+    },
+    {
+      header: "Price",
+      accessor: "per_stock_Price",
       className: "min-w-[120px]",
+    },
+    {
+      header: "Receive Date",
+      accessor: "date",
+      className: "min-w-[150px]",
+    },
+    {
+      header: "Give Date",
+      accessor: (row: any) => (
+        <span className="text-sm font-medium text-red-500">
+          {row.stockGivenDate}
+        </span>
+      ),
+      className: "min-w-[150px]",
     },
     {
       header: "Actions",
@@ -161,17 +180,51 @@ export default function Merchant() {
 
   return (
     <div>
-      <div className="m-2 flex justify-end">
+      <div className="mb-2 flex w-full items-center justify-between">
+        <div className="relative rounded-md border bg-white p-2">
+          <button className="absolute left-2 top-1/2 -translate-y-1/2 ">
+            <svg
+              className="fill-body hover:fill-primary dark:fill-bodydark dark:hover:fill-primary"
+              width="20"
+              height="20"
+              viewBox="0 0 20 20"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                fillRule="evenodd"
+                clipRule="evenodd"
+                d="M9.16666 3.33332C5.945 3.33332 3.33332 5.945 3.33332 9.16666C3.33332 12.3883 5.945 15 9.16666 15C12.3883 15 15 12.3883 15 9.16666C15 5.945 12.3883 3.33332 9.16666 3.33332ZM1.66666 9.16666C1.66666 5.02452 5.02452 1.66666 9.16666 1.66666C13.3088 1.66666 16.6667 5.02452 16.6667 9.16666C16.6667 13.3088 13.3088 16.6667 9.16666 16.6667C5.02452 16.6667 1.66666 13.3088 1.66666 9.16666Z"
+                fill=""
+              />
+              <path
+                fillRule="evenodd"
+                clipRule="evenodd"
+                d="M13.2857 13.2857C13.6112 12.9603 14.1388 12.9603 14.4642 13.2857L18.0892 16.9107C18.4147 17.2362 18.4147 17.7638 18.0892 18.0892C17.7638 18.4147 17.2362 18.4147 16.9107 18.0892L13.2857 14.4642C12.9603 14.1388 12.9603 13.6112 13.2857 13.2857Z"
+                fill=""
+              />
+            </svg>
+          </button>
+
+          <input
+            type="text"
+            placeholder="Type to search..."
+            className="w-full bg-transparent pl-9 pr-4 font-medium focus:outline-none xl:w-125"
+            value={filter}
+            onChange={(e) => {
+              setFilter(e.target.value);
+              setCurrentPage(1); // Reset to the first page when filtering
+            }}
+          />
+        </div>
         <button
           onClick={() => router.push("/merchant/addUpdatemerchant")}
-          className="inline-flex w-auto items-center justify-center gap-2.5 rounded-md bg-primary px-5 py-3 text-center font-medium text-white hover:bg-opacity-90"
+          className="inline-flex w-auto items-center justify-center gap-2.5 rounded-md bg-primary px-4 py-[9px] text-center font-medium text-white hover:bg-opacity-90"
         >
-          + Add Seller
+          + Add Stock
         </button>
       </div>
-      <div className="max-w-md md:max-w-full">
-        <Table data={paginatedData} columns={columns as any} />
-      </div>
+      <Table data={paginatedData} columns={columns as any} />
       <div className="mt-4 flex justify-end">
         <button
           onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 1))}
@@ -183,13 +236,13 @@ export default function Merchant() {
         <button
           onClick={() =>
             setCurrentPage((prev) =>
-              prev < Math.ceil(packageData.length / itemsPerPage)
+              prev < Math.ceil(filteredData.length / itemsPerPage)
                 ? prev + 1
                 : prev,
             )
           }
           disabled={
-            currentPage === Math.ceil(packageData.length / itemsPerPage)
+            currentPage === Math.ceil(filteredData.length / itemsPerPage)
           }
           className="mx-1 rounded bg-gray-200 px-4 py-2 hover:bg-gray-300"
         >

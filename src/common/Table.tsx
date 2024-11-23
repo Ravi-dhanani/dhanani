@@ -13,9 +13,9 @@ interface TableProps<T> {
 
 const Table = <T,>({ data, columns }: TableProps<T>) => {
   return (
-    <div className="max-w-full rounded-sm border border-stroke bg-white px-5 pb-2.5 pt-6 shadow-default dark:border-strokedark dark:bg-boxdark xl:pb-1">
-      <div className="overflow-x-auto">
-        <table className="w-full table-auto">
+    <div className="">
+      <div className="overflow-x-auto rounded-lg border border-stroke bg-white px-0 pb-2.5 pt-2 shadow-default xl:pb-1 ">
+        <table className="w-full table-auto rounded-xl">
           <thead>
             <tr className="bg-gray-2 text-left dark:bg-meta-4">
               {columns.map((column, index) => (
@@ -42,7 +42,7 @@ const Table = <T,>({ data, columns }: TableProps<T>) => {
                   return (
                     <td
                       key={colIndex}
-                      className="border-b border-[#eee] px-4 py-5 dark:border-strokedark"
+                      className="border-b border-[#eee] px-4 py-4 dark:border-strokedark"
                     >
                       {content}
                     </td>
