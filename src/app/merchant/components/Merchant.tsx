@@ -40,12 +40,36 @@ const merchantData = [
     email: "user@gmail.com",
     status: "Paid",
   },
+  {
+    name: "Standard Package",
+    mobileNo: 9723567024,
+    email: "user@gmail.com",
+    status: "Paid",
+  },
+  {
+    name: "Standard Package",
+    mobileNo: 9723567024,
+    email: "user@gmail.com",
+    status: "Paid",
+  },
+  {
+    name: "Standard Package",
+    mobileNo: 9723567024,
+    email: "user@gmail.com",
+    status: "Paid",
+  },
+  {
+    name: "Standard Package",
+    mobileNo: 9723567024,
+    email: "user@gmail.com",
+    status: "Paid",
+  },
 ];
 export default function Merchant() {
   const router = useRouter();
   const [currentPage, setCurrentPage] = useState(1);
   const [searchTerm, setSearchTerm] = useState("");
-  const itemsPerPage = 5;
+  const itemsPerPage = 10;
 
   const filteredData = merchantData.filter((item) => {
     const searchValue = searchTerm.toLowerCase();
