@@ -55,12 +55,12 @@ const Header = (props: {
 
           <Link className="flex flex-shrink-0 items-center lg:hidden" href="/">
             <Image
-              width={32}
-              height={32}
+              width={40}
+              height={40}
               src={"/images/logo/logo-icon.svg"}
               alt="Logo"
             />
-            <span className="text-xl font-bold text-white">Tail Admin</span>
+            <span className="text-2xl font-bold text-white">Dhanani</span>
           </Link>
         </div>
 

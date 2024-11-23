@@ -85,7 +85,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
       >
         <div className="flex  items-center justify-between gap-2 px-6 py-5.5 lg:py-6.5">
           <Link href="/">
-            <div className="flex">
+            <div className="flex gap-x-2">
               <Image
                 width={50}
                 height={10}
@@ -94,9 +94,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
                 priority
                 className="h-10"
               />
-              <span className="text-4xl font-medium text-white">
-                Tail Admin
-              </span>
+              <span className="text-4xl font-medium text-white">Dhanani</span>
             </div>
           </Link>
 
