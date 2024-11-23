@@ -204,12 +204,12 @@ export default function Merchant() {
       <div className="m-2 flex justify-end">
         <button
           onClick={() => router.push("/merchant/addUpdatemerchant")}
-          className="inline-flex w-40 items-center justify-center gap-2.5 rounded-md bg-primary p-2 text-center font-medium text-white hover:bg-opacity-90 lg:px-8 xl:px-10"
+          className="inline-flex w-auto items-center justify-center gap-2.5 rounded-md bg-primary px-5 py-3 text-center font-medium text-white hover:bg-opacity-90"
         >
-          + Add Merchant
+          + Add Seller
         </button>
       </div>
-      <div className="max-w-sm">
+      <div className="max-w-md md:max-w-full">
         <Table data={paginatedData} columns={columns as any} />
       </div>
       <div className="mt-4 flex justify-end">

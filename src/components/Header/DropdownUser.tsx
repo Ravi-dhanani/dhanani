@@ -1,7 +1,7 @@
-import { useState } from "react";
-import Link from "next/link";
-import Image from "next/image";
 import ClickOutside from "@/components/ClickOutside";
+import Image from "next/image";
+import Link from "next/link";
+import { useState } from "react";
 
 const DropdownUser = () => {
   const [dropdownOpen, setDropdownOpen] = useState(false);
@@ -14,9 +14,7 @@ const DropdownUser = () => {
         href="#"
       >
         <span className="hidden text-right lg:block">
-          <span className="block text-sm font-medium text-white">
-            Pankaj dhanani
-          </span>
+          <span className="block text-sm font-medium text-white">Pankaj</span>
           <span className="block text-xs text-white">Embroidery Agent</span>
         </span>
 

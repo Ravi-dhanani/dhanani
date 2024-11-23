@@ -1,12 +1,11 @@
 "use client";
 
-import React, { useEffect, useRef, useState } from "react";
-import { usePathname } from "next/navigation";
-import Link from "next/link";
-import Image from "next/image";
-import SidebarItem from "@/components/Sidebar/SidebarItem";
 import ClickOutside from "@/components/ClickOutside";
+import SidebarItem from "@/components/Sidebar/SidebarItem";
 import useLocalStorage from "@/hooks/useLocalStorage";
+import Image from "next/image";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 interface SidebarProps {
   sidebarOpen: boolean;
@@ -64,7 +63,6 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
           sidebarOpen ? "translate-x-0" : "-translate-x-full"
         }`}
       >
-        {/* <!-- SIDEBAR HEADER --> */}
         <div className="flex  items-center justify-between gap-2 px-6 py-5.5 lg:py-6.5">
           <Link href="/">
             <div className="flex">
@@ -76,7 +74,9 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
                 priority
                 className="h-10"
               />
-              <span className="text-4xl font-medium text-white">Dhanani</span>
+              <span className="text-4xl font-medium text-white">
+                Tail Admin
+              </span>
             </div>
           </Link>
 
