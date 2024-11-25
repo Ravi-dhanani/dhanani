@@ -4,7 +4,9 @@ import "@/css/satoshi.css";
 import "@/css/style.css";
 import "flatpickr/dist/flatpickr.min.css";
 import "jsvectormap/dist/jsvectormap.css";
+import "react-toastify/dist/ReactToastify.css";
 import React, { useEffect, useState } from "react";
+import { ToastContainer } from "react-toastify";
 
 export default function RootLayout({
   children,
@@ -24,6 +26,7 @@ export default function RootLayout({
       </head>
       <body suppressHydrationWarning={true}>
         <div className="dark:bg-boxdark-2 dark:text-bodydark">
+          <ToastContainer />
           {loading ? <Loader /> : children}
         </div>
       </body>
