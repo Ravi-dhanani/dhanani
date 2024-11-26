@@ -2,6 +2,7 @@
 import React from "react";
 import Link from "next/link";
 import Image from "next/image";
+import Cookies from "js-cookie";
 
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
@@ -29,6 +30,8 @@ const SignIn: React.FC = () => {
       const response = await ApiServices.login(data);
 
       if (response?.admin) {
+        console.log(response.token);
+        Cookies.set("refreshToken", response.token);
         Toast.show("Logged in successfully", "success");
       } else {
         Toast.show("Invalid email or password", "error");
