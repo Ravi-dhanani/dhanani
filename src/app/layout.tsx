@@ -7,7 +7,16 @@ import "jsvectormap/dist/jsvectormap.css";
 import "react-toastify/dist/ReactToastify.css";
 import React, { useEffect, useState } from "react";
 import { ToastContainer } from "react-toastify";
-
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      refetchOnWindowFocus: false,
+      refetchOnMount: true,
+      staleTime: 0,
+    },
+  },
+});
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -26,8 +35,10 @@ export default function RootLayout({
       </head>
       <body suppressHydrationWarning={true}>
         <div className="dark:bg-boxdark-2 dark:text-bodydark">
-          <ToastContainer />
-          {loading ? <Loader /> : children}
+          <QueryClientProvider client={queryClient}>
+            <ToastContainer />
+            {loading ? <Loader /> : children}
+          </QueryClientProvider>
         </div>
       </body>
     </html>

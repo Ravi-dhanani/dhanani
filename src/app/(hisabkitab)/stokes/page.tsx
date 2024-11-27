@@ -224,7 +224,7 @@ export default function Page() {
           + Add Stock
         </button>
       </div>
-      <Table data={paginatedData} columns={columns as any} />
+      {/* <Table data={paginatedData} columns={columns as any} /> */}
       <div className="mt-4 flex justify-end">
         <button
           onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 1))}

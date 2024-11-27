@@ -9,6 +9,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import { Toast } from "@/common/Toast";
 import ApiServices from "@/components/services/Apiservices";
+import { useRouter } from "next/navigation";
 
 const schema = yup
   .object({
@@ -18,6 +19,7 @@ const schema = yup
   .required();
 
 const SignIn: React.FC = () => {
+  const router = useRouter();
   const {
     register,
     handleSubmit,
@@ -30,9 +32,11 @@ const SignIn: React.FC = () => {
       const response = await ApiServices.login(data);
 
       if (response?.admin) {
-        console.log(response.token);
-        Cookies.set("refreshToken", response.token);
+        localStorage.setItem("admin", JSON.stringify(response.admin));
+        Cookies.set("refreshToken", response.token, { expires: 1 });
+        Cookies.set("adminId", response.admin._id, { expires: 1 });
         Toast.show("Logged in successfully", "success");
+        router.push("/");
       } else {
         Toast.show("Invalid email or password", "error");
       }

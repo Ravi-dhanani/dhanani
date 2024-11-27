@@ -6,7 +6,7 @@ class HttpService {
       headers,
     });
     let result = await intermidateRes.json();
-    if (!result.status) {
+    if (!result) {
       throw new Error(result.message);
     }
     return result;
@@ -39,7 +39,22 @@ class HttpService {
       method: "PUT",
     });
     let result = await intermidateRes.json();
-    if (!result.status) {
+    if (!result) {
+      throw new Error(result.message);
+    }
+    return result;
+  }
+  static async delete(url: string, token?: any) {
+    let headers: any = {
+      "Content-Type": "application/json",
+    };
+    if (token) headers.Authorization = token;
+    let intermidateRes = await fetch(url, {
+      headers,
+      method: "DELETE",
+    });
+    let result = await intermidateRes.json();
+    if (!result) {
       throw new Error(result.message);
     }
     return result;

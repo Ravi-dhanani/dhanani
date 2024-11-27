@@ -1,3 +1,5 @@
+import Cookies from "js-cookie";
+
 class AuthServices {
   // static setToken(token: string) {
   //   localStorage.setItem("token", token);
@@ -6,7 +8,7 @@ class AuthServices {
     sessionStorage.setItem("token", token);
   }
   static getToken() {
-    return sessionStorage.getItem("token");
+    return Cookies.get("refreshToken");
   }
 
   static setUserInfo(info: any) {
